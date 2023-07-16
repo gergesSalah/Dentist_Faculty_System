@@ -1,0 +1,56 @@
+﻿@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout !=  null)
+    {
+        Layout = parentLayout.ToString();
+    }
+    else
+    {
+        Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    }
+}
+
+<div class="row all_editing">
+    <div class="col-2 nva-edtitng">
+        <partial name="_ManageNav" />
+    </div>
+    <div class="col-4 edititng">
+        <div class="card card-resend-confirmmail-editing">
+            <div class="card-body">
+                <h4 class="card-title">Manage your account</h4>
+                <p class="card-text">Change your account settings</p>
+                <br />
+                @RenderBody()
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="card card-resend-confirmmail">
+    <div class="card-body">
+        <h4 class="card-title">Manage your account</h4>
+        <p class="card-text" >Change your account settings</p>
+        <img src="~/images/Manage_your_account.png" width="100%" style="margin-bottom:20px" />
+        <br />
+        @RenderBody()
+        <br>
+        <a class="btn btn-success" href="/Identity/Account/Login">Log In</a>
+    </div>
+</div>*@
+
+
+@*<div>
+    <h2></h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <partial name="_ManageNav" />
+        </div>
+        <div class="col-md-9">
+            @RenderBody()
+        </div>
+    </div>
+</div>*@
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

@@ -1,0 +1,322 @@
+﻿@model DentalProject_Graduation.Models.ApplicationUser
+
+
+
+@* desgin profile Doctor *@
+ <div class="container-fluid">
+	 <div class="row"> 
+		     <!-- Add sidebar column -->
+
+
+		<div class="col-md-3 sidebar_doc">
+
+			<cneter style="margin-top:50px">
+				<img src="data:image/*;base64,@Convert.ToBase64String(Model.ImageUser)" class="profile-img-patient" width="80%" height="250" />
+				<h4 class="name-patient" id="title_doc">@Model.FirstName @Model.LastName</h4>
+			</cneter>
+			<hr class="split-patientLine" />
+
+			<p><button class="s_bar_but" id="HomeReload" style="margin-top:20px">Home</button></p>
+
+			<p><a href="/Identity/Account/Manage" class="s_bar_but">Edit Profile</a></p>
+			<p><button class="s_bar_but" id="BtnInfectedCases">Infected Cases</button></p>
+			<p><button class="s_bar_but" id="BtnTreatedCase">Treated Cases</button></p>
+
+
+		</div>
+
+
+				    <!-- Add main content column -->
+	
+        <div class="col-md-9 col_card" id=Cases>
+
+            <div class="col-lg-12 mb-4 order-0 land-message">
+                <div class="card">
+                    <div class="d-flex align-items-end row">
+                        <div class="col-sm-7">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">Congratulations @Model.FirstName! 🎉</h5>
+                                <p class="mb-4">
+                                    You are now able to take full advantage of all the services of the site.You are now considered a "Doctor" user
+                                </p>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-5 text-center text-sm-left">
+                            <div class="card-body pb-0 px-0 px-md-4">
+                                <img src="~/images/man-with-laptop-light.png"
+                                     height="140"
+                                     alt="View Badge User"
+                                     data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                                     data-app-light-img="illustrations/man-with-laptop-light.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*    personal Data *@
+            <div class="col-lg-12 mb-4 order-0 land-message">
+                <div class="card">
+                    <div class="d-flex align-items-end row">
+                        <div class="col-sm-7">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">Personal Data</h5>
+                                <br />
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <p class="mb-3">
+                                            <span class="identitfier">Name: </span>  @Model.FirstName  @Model.LastName
+                                        </p>
+                                        <p class="mb-3">
+                                            <span class="identitfier">Phone: </span>   @Model.PhoneNumber
+                                        </p>
+                                        <a href="/Identity/Account/Manage" class="btn  btn-success mb-3">Edit Personal Data</a>
+
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <p class="mb-3">
+                                            @Model.Email
+                                        </p>
+                                        <p class="mb-3">
+                                            <span class="identitfier">Level: </span>  @ViewBag.Student.CollegeLevel
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-5 text-center text-sm-left">
+                            <div class="card-body pb-0 px-0 px-md-4">
+                                <img src="~/images/Personal-Data.jpg"
+                                     height="140"
+                                     alt="View Badge User"
+                                     data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                                     data-app-light-img="illustrations/man-with-laptop-light.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <div class="avatar flex-shrink-0">
+                                        <img src="~/images/icons8-case-32.Png.png"
+                                             alt=" Total Cases"
+                                             class="rounded" />
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn p-0"
+                                                type="button"
+                                                id="cardOpt3"
+                                                data-bs-toggle="dropdown"
+                                                aria-haspopup="true"
+                                                aria-expanded="false">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="fw-semibold d-block mb-1">Total Cases</span>
+                                <h3 class="card-title mb-2">
+                                    @ViewBag.Total
+
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <div class="avatar flex-shrink-0">
+                                        <img src="~/images/treat.png"
+                                             alt="Treated Cases"
+                                             class="rounded" style="width:40px;height:40px" />
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn p-0"
+                                                type="button"
+                                                id="cardOpt6"
+                                                data-bs-toggle="dropdown"
+                                                aria-haspopup="true"
+                                                aria-expanded="false">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span>Treated Cases</span>
+                                <h3 class="card-title text-nowrap mb-1">@ViewBag.RecoveCases</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <div class="avatar flex-shrink-0">
+                                        <img src="~/images/infected.png"
+                                             alt="Infected Cases"
+                                             class="rounded" style="width:40px;height:40px" />
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn p-0"
+                                                type="button"
+                                                id="cardOpt6"
+                                                data-bs-toggle="dropdown"
+                                                aria-haspopup="true"
+                                                aria-expanded="false">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span>Infected Cases</span>
+                                <h3 class="card-title text-nowrap mb-1">@ViewBag.InfectedCases</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-lg-12 mb-4 order-0 land-message" style="    margin-top: 50px;">
+                        <div class="card">
+                            <div class="d-flex align-items-end row">
+                                <div class="col-sm-7">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">Benefits</h5>
+                                        <p class="mb-4">
+                                            Through the websites, you can communicate with cases infected with the disease you are looking for and specify the date of the session through e-mail or contact him by phone.
+                                        </p>
+
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 text-center text-sm-left">
+                                    <div class="card-body pb-0 px-0 px-md-4">
+                                        <img src="~/images/benefits.png"
+                                             height="140"
+                                             alt="View Badge User"
+                                             data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                                             data-app-light-img="illustrations/man-with-laptop-light.png" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		 </div>
+	 </div>
+        
+
+			
+			  
+
+
+
+@*@*  Profile Dental Student 
+<section class="SectionProfileStudent">
+	<div class="Container">
+		<div class="row">
+			<div class="col-sm-3 divStudentData">
+				<center>
+					<img class="imgProfileShow" src="data:image/;base64,@Convert.ToBase64String(Model.ImageUser)" />
+					<h4>@Model.FirstName @Model.LastName</h4>
+					<p>@Model.Email</p>
+					<p>Phone:@Model.PhoneNumber</p>
+					<p>Acadmic Level:@ViewBag.Student.CollegeLevel</p>
+                          <p id=Nums_TreatedCases> Trusted Cases :@ViewBag.RecoveCases</p>				
+					      <p id=Nums_TreatedCases>Infected Cases :@ViewBag.infectedCases</p>				
+
+						  <a class="btn-block Edit_btn">Edit Profile</a>
+				     <input type="button" value="Infected Cases" class="btn-block Edit_btn" id="BtnInfectedCases"/>
+				     <input type="button" value="Treated Cases" class="btn-block Edit_btn" id="BtnTreatedCase"/>
+			
+				 </center>
+			</div>
+			
+			<div class="col-sm-8 divStudentInfo">
+				<div class="row" id=Cases>
+			
+				</div>
+			</div>
+		</div>
+	</div>
+
+</section>
+*@
+<script src="~/Scripts/jquery.js"></script>
+
+	<script>
+
+	
+ $(function () {
+
+		 	 window.onload=function(){
+	
+	 document.getElementById("BtnInfectedCases").style.backgroundColor="#555";
+	 	 document.getElementById("BtnTreatedCase").style.backgroundColor="#2f89fc";
+ }
+
+ ///
+        $("#HomeReload").click(function () {
+
+            location.reload();
+            $(this).css("background-color", "#555");
+        })
+
+
+	$("#BtnInfectedCases").click(function(){
+			$("#Cases").html("")
+		$.ajax({
+	  url: '/Profile/InfectedCases',
+	  type:'Get',
+	
+			 data: {},
+			success:function(res){
+					 document.getElementById("BtnInfectedCases").style.backgroundColor="#555";
+	 	 document.getElementById("BtnTreatedCase").style.backgroundColor="#2f89fc";
+				$("#Cases").html(res)
+			}
+		});   
+	});
+	$("#BtnTreatedCase").click(function(){
+  $("#Cases").html("");
+  $.ajax({
+	  url: '/Profile/TreatedCases',
+	  type:'Get',
+	
+			 data: {},
+			success:function(res){
+					 document.getElementById("BtnTreatedCase").style.backgroundColor="#555";
+	 	 document.getElementById("BtnInfectedCases").style.backgroundColor="#2f89fc";
+				$("#Cases").html(res)
+			}
+		});
+
+	});
+	
+
+
+	
+	});
+
+
+</script>

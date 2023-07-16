@@ -1,0 +1,97 @@
+﻿
+@model IEnumerable<DentalProject_Graduation.Data.Entities.InfectedCasesVM>
+
+<div class="col-sm-12" style=" background-color: #f8f9fa;margin-top:5px;margin-bottom:5px;">
+
+    <div class="col-lg-12 mb-4 order-0 land-message">
+        <div class="card">
+            <div class="d-flex align-items-end row">
+                <div class="col-sm-7">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Affected Cases</h5>
+                        <p class="mb-4">
+                            Cases that must be treated by uploading an image after the teeth
+                        </p>
+                        <p class="mb-4">
+                            These are the cases that you communicated with via e-mail or phone, and you set the date for the session
+                        </p>
+
+
+                    </div>
+                </div>
+                <div class="col-sm-5 text-center text-sm-left">
+                    <div class="card-body pb-0 px-0 px-md-4">
+                        <img src="~/images/Affected_Cases.png"
+                             height="120"
+                             alt="View Badge User"
+                             data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                             data-app-light-img="illustrations/man-with-laptop-light.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div style="display:flex;align-content:center;justify-content:center" class="row">
+
+@foreach(var item in Model){
+
+        <div class="col_infectedcase col-4">
+            <div class="card_infectedcase">
+                <img src="data:image/*;base64,@Convert.ToBase64String(item.DiseasePicture)" style="width:100% ;max-height:200px;min-height:199px">
+                <div class="cont_card_infectedcase">
+                    <h4 id="title_pat">Patient Name :  @item.Firstname @item.Lastname</h4>
+                    <p id="title_pat"> Case : @item.DiseaseName</p>
+                    <p>Appointment:  @item.Appoinment</p>
+                   
+                    <p>Phone : @item.phone</p>
+                    <p>Age : @item.Age</p>
+                    <div class="col-sm-12" style="background-color:azure;margin:3px;box-shadow: 5px 5px 5px #888;padding:5px">
+                        <center>
+                            <h5>This Cases Under Treatement</h5>
+                        </center>
+                        <p><a href="/Profile/FinishCase/@item.CaseInformationID" class="but_card_infectedcase">finish case</a></p>
+
+
+                    </div>
+
+                    <br>
+                </div>
+            </div>
+        </div>
+
+	   
+}
+</div>
+
+   <script>
+      
+    var imageTeeth=document.getElementById("image_input");
+    var afterImage=document.getElementById("ImageAfter");
+
+    imageTeeth.onchange =function(){
+        if (!VialdExImage.includes(imageTeeth.value.substr(-3))) {
+            imageTeeth.value = null
+            document.getElementById("ImageViald").innerText = "Upload Image Not File"
+                document.getElementById("ImageViald").classList.add("text-danger text-center")
+                 document.getElementById("ImageAfter").src =""
+        }
+        else{
+           
+          
+            document.getElementById("ImageAfter").src = window.URL.createObjectURL(imageTeeth.files[0])
+            document.getElementById("ImageViald").innerHTML=""
+            document.getElementById("ImageViald").classList.add("")
+        }
+    }
+document.getElementById("removeImage").onclick=function(){
+    document.getElementById("ImageAfter").src=""
+    
+}
+
+   
+   </script>
+

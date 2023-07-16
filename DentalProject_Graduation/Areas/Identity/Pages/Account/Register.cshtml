@@ -1,0 +1,197 @@
+﻿@page
+@model RegisterModel
+
+
+
+
+<div class="Containter_Form_Register">
+    <div class="Contanier_FormRegister body_register ">
+
+        <div class=" All_Element_Regiser   page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins Form_Register">
+
+            <div class=" All_Element_Regiser   wrapper wrapper--w680">
+
+
+                <div class=" All_Element_Regiser   card_reg  card-4">
+
+                    <div class=" All_Element_Regiser   card-body ">
+                        <div>
+
+                            <img src="" class="thumbnail DisapearAgeAndLevel" width="100" height="100" style="float: right;" id="UploadedImage">
+
+
+                            <h2 class=" All_Element_Regiser   title text_Register">Create New Account</h2>
+                            <p class=" All_Element_Regiser   title text_Register">To Benefit Of The Site's Services</p>
+                        </div>
+                        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="POST" class="All_Element_Regiser" enctype="multipart/form-data">
+
+                            <!-- input Name -->
+                            <div class=" All_Element_Regiser   row_Register  row-space">
+                                <!-- input For First NAME -->
+                                <div class=" All_Element_Regiser   col-2-reg">
+                                    <div class=" All_Element_Regiser   input-group_reg">
+                                        <label asp-for="Input.FirstName" class=" All_Element_Regiser   label" aria-required="true" maxlength="100">first name</label>
+                                        <input class="input_reg  All_Element_Regiser   input--style-4"
+                                               type="text" asp-for="Input.FirstName" />
+                                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- input For Last NAME -->
+                                <div class=" All_Element_Regiser   col-2-reg">
+                                    <div class=" All_Element_Regiser   input-group">
+                                        <label class=" All_Element_Regiser   label">last name</label>
+                                        <input asp-for="Input.LastName" class="input_reg  All_Element_Regiser   input--style-4"
+                                               type="text" aria-required="true" maxlength="100" />
+                                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ******************** -->
+                            <!-- input Email -->
+                            <div class=" All_Element_Regiser   row_Register  row-space">
+                                <div class=" All_Element_Regiser   col-4-reg">
+                                    <div class=" All_Element_Regiser   input-group_reg">
+                                        <label class=" All_Element_Regiser   label">Email</label>
+                                        <div class=" All_Element_Regiser   input-group-icon">
+                                            <input asp-for="Input.Email"
+                                                   class="input_reg  All_Element_Regiser   input--style-4 js-datepicker"
+                                                   type="text" aria-required="true" maxlength="100" />
+                                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ******************** -->
+                            <!-- input phone -->
+                            <div class=" All_Element_Regiser   row_Register  row-space">
+                                <div class=" All_Element_Regiser   col-4-reg">
+                                    <div class=" All_Element_Regiser   input-group_reg">
+                                        <label class=" All_Element_Regiser   label">Phone</label>
+                                        <div class=" All_Element_Regiser   input-group-icon">
+                                            <input asp-for="Input.Phone"
+                                                   class="input_reg  All_Element_Regiser   input--style-4 js-datepicker"
+                                                   type="text" aria-required="true" id="Phone" />
+                                            <span asp-validation-for="Input.Phone" class="text-danger" id="PhoneVaild"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ******************** -->
+                            @* Waiting is Inputs For Solve Prog*@
+                            <!-- input Get Photo And UserType -->
+                            <div class=" All_Element_Regiser   row_Register  row-space">
+
+                                <div class=" All_Element_Regiser   col-2-reg">
+                                    <div class=" All_Element_Regiser   input-group_reg">
+
+                                        <label class=" All_Element_Regiser   label">UserType</label>
+                                        <select class="input_reg  All_Element_Regiser   input--style-4 SeletedUserType  js-datepicker " asp-for="Input.UserType" asp-items="@(new SelectList(Model.UserType,"Name","Name"))" id="SelectUserType"></select>
+
+
+
+                                    </div>
+                                </div>
+
+                                <div class=" All_Element_Regiser   col-2-reg">
+                                    <div class=" All_Element_Regiser   input-group_reg">
+                                        <label class=" All_Element_Regiser   label">Upload Image</label>
+
+                                        <input name="ImageUser" class="input_reg  All_Element_Regiser   input--style-4"
+                                               type="file" aria-required="true" id="ImageUser" />
+                                        <span class="text-danger" id="ImageViald"></span>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- ******************** -->
+                            <!-- input Age of Patient -->
+                            <div class=" All_Element_Regiser   row_Register  row-space DisapearAgeAndLevel" id="AgePatient">
+                                <div class=" All_Element_Regiser   col-4-reg">
+                                    <div class=" All_Element_Regiser   input-group_reg">
+                                        <label class=" All_Element_Regiser   label">Age</label>
+                                        <div class=" All_Element_Regiser   input-group-icon">
+                                            <input asp-for="Input.Age"
+                                                   class="input_reg  All_Element_Regiser   input--style-4 js-datepicker"
+                                                     type="text" aria-required="true" id="checkAge />
+                                            <span asp-validation-for="Input.Age" class="text-danger" id="AgePatientViald"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ******************** -->
+                            <!-- input Level Collage of Student -->
+                            <div class=" All_Element_Regiser   row_Register  row-space DisapearAgeAndLevel" id="DoctorLevel">
+                                <div class=" All_Element_Regiser   col-4-reg">
+                                    <div class=" All_Element_Regiser   input-group_reg">
+                                        <label class=" All_Element_Regiser   label">Level</label>
+                                        <div class=" All_Element_Regiser   input-group-icon">
+                                            <input asp-for="Input.Level"
+                                                   class="input_reg  All_Element_Regiser   input--style-4 js-datepicker"
+                                                   type="text" aria-required="true" id="checkLevel" />
+                                            <span asp-validation-for="Input.Level" class="text-danger" id="DoctorLeveltViald"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ******************** -->
+                            <!-- input  of password -->
+                            <div class=" All_Element_Regiser   row_Register  row-space">
+                                <div class=" All_Element_Regiser   col-4-reg">
+                                    <div class=" All_Element_Regiser   input-group_reg">
+                                        <label class=" All_Element_Regiser   label">Password</label>
+                                        <div class=" All_Element_Regiser   input-group-icon">
+                                            <input asp-for="Input.Password"
+                                                   class="input_reg  All_Element_Regiser   input--style-4 js-datepicker"
+                                                   type="password" aria-required="true" />
+                                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ******************** -->
+                            <!-- input  of ConfirmPassword -->
+                            <div class=" All_Element_Regiser   row_Register  row-space">
+                                <div class=" All_Element_Regiser   col-4-reg">
+                                    <div class=" All_Element_Regiser   input-group_reg">
+                                        <label class=" All_Element_Regiser   label">ConfirmPassword</label>
+                                        <div class=" All_Element_Regiser   input-group-icon">
+                                            <input asp-for="Input.ConfirmPassword"
+                                                   class="input_reg  All_Element_Regiser   input--style-4 js-datepicker"
+                                                   type="password" aria-required="true" />
+                                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ******************** -->
+
+                            <div class=" All_Element_Regiser   p-t-15">
+
+                                <button class=" col-2-reg btn_register All_Element_Regiser   btn_Form_reg btn--radius-2 btn--blue" type="submit" id="registerSubmit">
+                                    Submit
+                                </button>
+
+
+                                <button class=" col-2-reg All_Element_Regiser   btn_Form_reg btn--radius-2 btn--blue2"
+                                        type="reset">
+                                    ResetAll
+                                </button>
+
+                            </div>
+                            <br /> 
+
+                            <center>
+                                <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl" class=" col-2-reg btn_register All_Element_Regiser   btn_Form_reg btn--radius-2 btn--blue">Log In</a>
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

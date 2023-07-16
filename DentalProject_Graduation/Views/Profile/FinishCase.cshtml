@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewData["Title"] = "FinishCases";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="nva_inhert_page">
+    <section class="home-slider owl-carousel ">
+    <div class="slider-item bread-item"  >
+        <div class="overlay"></div>
+        <div class="container" data-scrollax-parent="true">
+            <div class="row slider-text align-items-end">
+                <div class="col-md-7 col-sm-12 ftco-animate mb-5">
+                    <p class="breadcrumbs" data-scrollax=" properties: { translateY: '70%', opacity: 1.6}"><span class="mr-2"><a href="index.html"></a></span> <span></span></p>
+                    <h1 class="mb-3" data-scrollax=" properties: { translateY: '70%', opacity: .9}"> </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<center >
+<div class="panel panel-body" style ="width:60%;background-color:#f8f9fa; padding:10px;margin:15px" >
+    
+        <div class="col-sm-12" style ="width:100%;background-color:#f8f9fa" >
+
+
+            <form asp-action="FinishCase" asp-controller="profile" enctype="multipart/form-data">
+                 <div style="background-color:white" id="exampleModalLong"  role="dialog" aria-labelledby="exampleModalLongTitle">
+        <div  style ="background-color:#f8f9fa">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Case Completed</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                Please upload a picture of the patient's teeth after completing the treatment to add this case to your portfolio
+            then delete it from the affected cases
+            </div>
+         <center>
+            <span id="ImageViald" class=""></span>
+            <br>
+            <img width="250" height="150" class="img-thumbnail" id="ImageAfter">
+            <br>
+                             @*   < class="btn btn-danger" id="removeImageAfter">Remove Image</>*@
+                                <input type="button" value="Remove Image"  class="btn btn-danger" id="removeImageAfter" />
+         </center>
+            <hr>
+
+            <span id="Erro_Image"></span>
+            <div class="Data_Patient_Send">
+         
+           <input name="id" value="@ViewBag.ID" type="number" hidden />
+              <input id="image_input" type="file" name="ImageAfter" accept="image/*" class="btn btn-success">
+            </div>
+                <div class="modal-footer">
+                
+                    <a  href="/Profile/Student" class="btn btn-secondary" data-dismiss="modal">Close</a>
+                    
+                  <button type="submit" class="btn btn-primary" id="finishCase">Save changes</button>
+                </div>
+           
+            </div>
+            
+          
+        </div>
+         
+       
+    </div>
+
+            </form>
+        </div>
+    </div>
+
+</center>
+
+
+<script>
+    var InputImage= document.getElementById("image_input");
+    var PlaceImage=document.getElementById("ImageAfter");
+    var VialdExImage = ['png', 'jpg', 'gif', 'bmp', 'jpeg', 'PNG', 'JPG', 'GIF', 'BMP', 'JPEG'];
+
+   InputImage.onchange=function(){
+         if (!VialdExImage.includes(InputImage.value.substr(-3))) {
+            InputImage.value = null
+            document.getElementById("ImageViald").innerText = "Upload Image Not File"
+            document.getElementById("ImageViald").classList.add("text-danger")
+            PlaceImage.src =""
+            $("#finishCase").preventDefualt();
+        }
+         else{          
+            PlaceImage.src = window.URL.createObjectURL(InputImage.files[0])
+            document.getElementById("ImageViald").innerHTML=""
+            //document.getElementById("ImageViald").classList.add("")
+        }
+
+    }
+
+    document.getElementById("removeImageAfter").onclick=function(){
+        PlaceImage.src = ""
+    }
+  
+   
+    
+
+
+
+</script>

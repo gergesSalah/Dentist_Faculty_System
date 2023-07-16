@@ -1,0 +1,58 @@
+﻿
+<br />
+<br />
+<div class="form-group" style="background-color:white;padding:10px;margin:10px">
+    <div class="text-center">
+        Modify the diagnosis of dental images by choosing the appropriate disease
+    </div>
+    <hr />
+    <div class="col-md-12">.
+        <img src="data:image/*;base64,@Convert.ToBase64String(ViewBag.photo)" class="profile-img-patient" width="80%" height="250" style="margin-bottom:20px" />
+<br />
+        <form asp-action="FinalEdit" method="post">
+       
+        <input type="number" value="@ViewBag.ID" readonly style="display:none" id="id" name="id">
+            @Html.DropDownList("Diagnosis",ViewBag.TypeDisess as IEnumerable<SelectListItem>, new { @class = "form-control", placeholder = "نوع النستخدم", enctype = "multipart/form-data",  id="selecttype", name="selecttype"})
+
+
+        <button id="finalEdit"  type="submit" class="btn btn-primary btn-block" style="width:250px;margin:30px">Edit</button>
+        </form>
+    </div>
+    <br />
+    <br />
+  
+</div>
+<br />
+<br />
+@*<script src="~/js/jquery-3.2.1.min.js"></script>
+<script>
+    
+    $("#finalEdit").click(function(){
+        var id = $("#id").val();
+
+        var iddisesas = $("#selecttype").val();
+        console.log("++++++++++++++++++++++++++++");
+        console.log(id);
+        console.log(iddisesas);
+   
+        $.ajax({
+            url: '/Admin/FinalEdit',
+            type: 'Post',
+          
+            data: {
+                id=id,
+                dis=iddisesas
+            },
+            success: function () {
+                $("#allCasas").click();
+            },
+            error: function () {
+                alert("Please Try Agin");
+            },
+
+
+        });
+
+    });
+
+</script>*@

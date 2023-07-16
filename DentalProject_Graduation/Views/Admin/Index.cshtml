@@ -1,0 +1,372 @@
+﻿@model DentalProject_Graduation.Models.ApplicationUser;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@*profile admin*@
+
+
+
+<section class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-3 sidebar_doc">
+
+            <cneter style="margin-top:50px">
+                <img src="~/images/admin.jpg" class="profile-img-patient" width="80%" height="250" />
+                <h4 class="name-patient" id="title_doc">@Model.FirstName @Model.LastName</h4>
+                <h5 class="name-patient" id="title_doc">Dashboard Admin</h5>
+            </cneter>
+            <hr class="split-patientLine" />
+
+            <p><button class="s_bar_but" id="HomeReload" style="margin-top:20px">Home</button></p>
+
+            <p><a href="/Identity/Account/Manage" class="s_bar_but">Edit Profile</a></p>
+            <p><button class="s_bar_but" id="allCasas">Cases</button></p>
+       
+         
+            
+
+        </div>
+
+        <!-- Add main content column -->
+        <div class="col-md-9 col_card" id=Cases>
+            
+
+            <div class="col-lg-12 mb-4 order-0 land-message">
+                <div class="card">
+                    <div class="d-flex align-items-end row">
+                        <div class="col-sm-7">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">Hello Admin @Model.FirstName! 🎉</h5>
+                                <p class="mb-4">
+                                    You are now the site's admin. You have all the powers. You can know and follow the site, for example, by identifying the number of cases and users and classifying them
+                                </p>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-5 text-center text-sm-left">
+                            <div class="card-body pb-0 px-0 px-md-4">
+                                <img src="~/images/man-with-laptop-light.png"
+                                     height="140"
+                                     alt="View Badge User"
+                                     data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                                     data-app-light-img="illustrations/man-with-laptop-light.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*    personal Data *@
+            <div class="col-lg-12 mb-4 order-0 land-message">
+                <div class="card">
+                    <div class="d-flex align-items-end row">
+                        <div class="col-sm-7">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">Personal Data</h5>
+                                <br />
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <p class="mb-3">
+                                            <span class="identitfier">Name: </span>  @Model.FirstName  @Model.LastName
+                                        </p>
+                                        <p class="mb-3">
+                                            <span class="identitfier">Phone: </span>   @Model.PhoneNumber
+                                        </p>
+                                        <a href="/Identity/Account/Manage" class="btn  btn-success mb-3">Edit Personal Data</a>
+
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <p class="mb-3">
+                                            @Model.Email
+                                        </p>
+                                       
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-5 text-center text-sm-left">
+                            <div class="card-body pb-0 px-0 px-md-4">
+                                <img src="~/images/Personal-Data.jpg"
+                                     height="140"
+                                     alt="View Badge User"
+                                     data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                                     data-app-light-img="illustrations/man-with-laptop-light.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="define-info" style="  font-size: 25px;
+    font-weight: 600;
+    margin: 10px;
+    border: #cfe8e8 2px solid;
+    padding: 10px;
+    width: 200px;
+background-color:white">
+                Cases
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <div class="avatar flex-shrink-0">
+                                        <img src="~/images/icons8-case-32.Png.png"
+                                             alt=" Total Cases"
+                                             class="rounded" />
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn p-0"
+                                                type="button"
+                                                id="cardOpt3"
+                                                data-bs-toggle="dropdown"
+                                                aria-haspopup="true"
+                                                aria-expanded="false">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="fw-semibold d-block mb-1">Total Cases</span>
+                                <h3 class="card-title mb-2">
+                                    @ViewBag.AllCases
+
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <div class="avatar flex-shrink-0">
+                                        <img src="~/images/treat.png"
+                                             alt="Treated Cases"
+                                             class="rounded" style="width:40px;height:40px" />
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn p-0"
+                                                type="button"
+                                                id="cardOpt6"
+                                                data-bs-toggle="dropdown"
+                                                aria-haspopup="true"
+                                                aria-expanded="false">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span>Treated Cases</span>
+                                <h3 class="card-title text-nowrap mb-1">@ViewBag.TreatedCase</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <div class="avatar flex-shrink-0">
+                                        <img src="~/images/infected.png"
+                                             alt="Infected Cases"
+                                             class="rounded" style="width:40px;height:40px" />
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn p-0"
+                                                type="button"
+                                                id="cardOpt6"
+                                                data-bs-toggle="dropdown"
+                                                aria-haspopup="true"
+                                                aria-expanded="false">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span>Infected Cases</span>
+                                <h3 class="card-title text-nowrap mb-1">@(ViewBag.AllCases - ViewBag.TreatedCase)</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-lg-12" style="margin-top:25px">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <div class="avatar flex-shrink-0">
+                                        <img src="~/images/not-contact.png"
+                                             alt="Infected Cases"
+                                             class="rounded" style="width:40px;height:40px" />
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn p-0"
+                                                type="button"
+                                                id="cardOpt6"
+                                                data-bs-toggle="dropdown"
+                                                aria-haspopup="true"
+                                                aria-expanded="false">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span>The existing cases have not been communicated with each other yet</span>
+                                <h3 class="card-title text-nowrap mb-1">@ViewBag.NotContactCases</h3>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="define-info" style="  font-size: 25px;
+    font-weight: 600;
+    margin: 10px;
+    border: #cfe8e8 2px solid;
+    padding: 10px;
+    width: 200px;
+background-color:white">
+                Users
+            </div>
+            <div class="col-lg-12" style="margin-bottom:25px">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <div class="avatar flex-shrink-0">
+                                        <img src="~/images/alluser.png"
+                                             alt=" Total Cases"
+                                             class="rounded" style="width: 40px;height: 40px;" />
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn p-0"
+                                                type="button"
+                                                id="cardOpt3"
+                                                data-bs-toggle="dropdown"
+                                                aria-haspopup="true"
+                                                aria-expanded="false">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="fw-semibold d-block mb-1">All Users</span>
+                                <h3 class="card-title mb-2">
+                                    @ViewBag.AllUser
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <div class="avatar flex-shrink-0">
+                                        <img src="~/images/patientUser.png"
+                                             alt="Treated Cases"
+                                             class="rounded" style="width:40px;height:40px" />
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn p-0"
+                                                type="button"
+                                                id="cardOpt6"
+                                                data-bs-toggle="dropdown"
+                                                aria-haspopup="true"
+                                                aria-expanded="false">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span>Patient Users</span>
+                                <h3 class="card-title text-nowrap mb-1">@ViewBag.PatientUser</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <div class="avatar flex-shrink-0">
+                                        <img src="~/images/DoctorUser.png"
+                                             alt="Infected Cases"
+                                             class="rounded" style="width:40px;height:40px" />
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn p-0"
+                                                type="button"
+                                                id="cardOpt6"
+                                                data-bs-toggle="dropdown"
+                                                aria-haspopup="true"
+                                                aria-expanded="false">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                                            <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                            <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span>Doctor Users</span>
+                                <h3 class="card-title text-nowrap mb-1">@ViewBag.DoctorUser</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+<script src="~/js/jquery-3.2.1.min.js"></script>
+<script>
+    $("#allCasas").click(function () {
+        $("#Cases").html();
+        $.ajax({
+            url: '/Admin/EditCases',
+            type: 'GET',
+                success: function (res) {
+                $("#Cases").html(res);
+            },
+            error: function () {
+                console.log("Error occurred during the AJAX request.");
+            }
+        });
+    });
+    
+
+</script>
+

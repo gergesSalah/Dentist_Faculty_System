@@ -1,0 +1,110 @@
+﻿@page
+@model LoginModel
+
+
+
+ <div class="Containter_Form_Register">
+	  <div class= "Contanier_FormRegister body_register ">
+
+				<div class=" All_Element_Regiser   page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins Form_Register">
+
+					<div class=" All_Element_Regiser   wrapper wrapper--w680">
+
+
+						<div class=" All_Element_Regiser   card_reg  card-4">
+
+							<div class=" All_Element_Regiser   card-body " >
+								 <h2 class=" All_Element_Regiser   title text_Register">Use a local account to log in.</h2>
+
+
+										  <form id="account" method="post">
+
+
+									<!-- input Email -->
+									<div class=" All_Element_Regiser   row_Register  row-space">
+										<div class=" All_Element_Regiser   col-4-reg">
+											<div class=" All_Element_Regiser   input-group_reg">
+												<label class=" All_Element_Regiser   label">Email</label>
+												<div class=" All_Element_Regiser   input-group-icon">
+													 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+													<input
+                                                     asp-for="Input.Email" 
+                                                        class="input_reg  All_Element_Regiser   input--style-4 js-datepicker"
+                                                        type="text" aria-required="true" maxlength="100"/>
+													<span asp-validation-for="Input.Email" class="text-danger"></span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- ******************** -->
+
+
+									<!-- input  of password -->
+										<div class=" All_Element_Regiser   row_Register  row-space">
+										<div class=" All_Element_Regiser   col-4-reg">
+											<div class=" All_Element_Regiser   input-group_reg">
+												<label class=" All_Element_Regiser   label">Password</label>
+												 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+												<div class=" All_Element_Regiser   input-group-icon">
+													<input
+                                                     asp-for="Input.Password" 
+                                                        class="input_reg  All_Element_Regiser   input--style-4 js-datepicker"
+                                                        type="password"  aria-required="true"/>
+												  <span asp-validation-for="Input.Password" class="text-danger"></span>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									 <!-- ******************** -->
+
+
+
+
+
+
+
+									<div class=" All_Element_Regiser   p-t-15">
+
+										<button class=" col-2-reg btn_register All_Element_Regiser   btn_Form_reg btn--radius-2 btn--blue" type="submit" id="registerSubmit">
+											LogIn
+										</button>
+
+									 						    <div class="checkbox col-2-reg">
+						<label asp-for="Input.RememberMe" class="form-label">
+							<input class="form-check-input" asp-for="Input.RememberMe" />
+										@Html.DisplayNameFor(m => m.Input.RememberMe)
+						</label>
+
+									</div>
+										
+
+									  <div>
+										
+							
+
+									</div>
+										
+					<p>
+						<a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+					</p>
+					<p>
+						<a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user !</a>
+					</p>
+					<p>
+						<a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation !</a>
+					</p>
+				</div>
+
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+ </div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

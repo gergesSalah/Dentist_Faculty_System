@@ -1,0 +1,103 @@
+﻿
+<div class="colo-12" style="margin-top:50px">
+    <div id="Finish" class="text-center"></div>
+    <div class="modal-content" style="border:none;box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border:none">
+                <div class="modal-header">
+                    <h5 class="modal-title">Dental Diagnosis</h5>
+                </div>
+                <form method="post" enctype="multipart/form-data" id="SendData">
+                    <div class="modal-body">
+                        <p>I must upload a clear picture of your teeth for a good diagnosis</p>
+
+                        <center>
+                            <div id="vaildImage" class="text-center text-danger"></div>
+                            <img src="..." class="img-fluid" alt="..." id="UploadedImage">
+                            <br />
+                            <input type="file" class="btn btn-success" name="upload" id="upload" accept="image/*" required />
+                            <button id="remove" class="btn btn-danger">Remove</button>
+                        </center>
+                    </div>
+                    <div class="modal-footer">
+
+                        <input type="submit" class="btn btn-primary" id="diagnosis" value="Diagnosis">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+<div class="text-center text-danger" id="ill"></div>
+<script>
+    var imageUser = document.getElementById("upload")
+    var VialdExImage = ['png', 'jpg', 'gif', 'bmp', 'jpeg', 'PNG', 'JPG', 'GIF', 'BMP', 'JPEG'];
+
+    imageUser.onchange = function () {
+        if (!VialdExImage.includes(imageUser.value.substr(-3))) {
+            imageUser.value = null
+            document.getElementById("vaildImage").innerHTML = "Upload Image Not File"
+        }
+        else {
+            document.getElementById("UploadedImage").classList.remove("DisapearAgeAndLevel")
+            document.getElementById("UploadedImage").src = window.URL.createObjectURL(imageUser.files[0])
+
+        }
+    }
+
+    $("#remove").click(function () {
+        $("#UploadedImage").attr('src', '...')
+        imageUser.val()
+
+    });
+
+    /// api to send image
+    $("#SendData").on('submit', function (e) {
+        e.preventDefault();
+
+        var formData = new FormData();
+        var fileInput = $('#upload')[0].files[0];
+        formData.append('fileup', fileInput);
+        $("#Finish").text("Diagnosed Successfully Go to 'Cases'" + " " + "Your Diagnosis is" + " " + "Caries")
+        $("#Finish").addClass("p-3 mb-2 bg-success text-white")
+
+        $.ajax({
+          
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                    $.ajax({
+                        url: '/Profile/Final',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (res) {
+                        console.log(res)
+                            
+                        $("#Finish").text("Diagnosed Successfully Go to 'Cases'" + " " + "Your Diagnosis is" + " " + res);
+                        $("#Finish").addClass("p-3 mb-2 bg-success text-white")
+                        ("#CasesNotContact").click()
+
+                        }
+                    });
+            
+                
+             
+
+            },
+            error: function (xhr, status, error) {
+                $("#data").html("<div class='p-3 mb-2 bg-danger text-white'>Please Upload Vaild Image</div>")
+            }
+
+        });
+
+    });
+
+</script>
+

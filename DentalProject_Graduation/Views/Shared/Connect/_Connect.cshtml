@@ -1,0 +1,53 @@
+﻿@model DentalProject_Graduation.Data.Entities.ConnectedVM
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+           <form asp-action="ConnectPatient" method="post">
+      <div class="modal-header">
+        <h5 class="modal-title">Connect With Patient and Enter Fields</h5>
+        
+      </div>
+      @if(ViewBag.err!=null){
+
+          <div class="panel panel-body text-danger">@ViewBag.err</div>
+      }
+      <div class="modal-body">
+    
+  <div class="form-group row">
+    <label for="fname" class="col-sm-2 col-form-label">FirstName</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="fname" asp-for="fname" >
+    </div>
+    <label for="laname" class="col-sm-2 col-form-label">LastName</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="laname" asp-for="lname"  value="@Model.lname">
+    </div>
+     <label for="Case" class="col-sm-2 col-form-label">Case</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="Case" asp-for="Disease"  value="@Model.Disease">
+    </div>
+     <label for="APPOIN" class="col-sm-2 col-form-label">Appoinment</label>
+    <div class="col-sm-10">
+      <input type="text"  class="form-control-plaintext" id="APPOIN" asp-for="Appointment"  value="@Model.Appointment">
+    </div>
+     <label for="Mes" class="col-sm-2 col-form-label">LastName</label>
+    <div class="col-sm-10">
+      <textarea asp-for="Message"   class="form-control-plaintext" id="Mes" maxlength="300" ></textarea>
+    </div>
+    
+
+
+
+  </div>
+
+  
+
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Connect</button>
+        <button type="button" class="btn btn-secondary" href="/Home/Index" >Close</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

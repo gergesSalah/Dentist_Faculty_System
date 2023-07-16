@@ -1,0 +1,33 @@
+﻿
+@model IEnumerable<DentalProject_Graduation.Data.Entities.AllCasesPatient>
+
+
+<div class="row">
+	<div class="col-sm-12">
+		<div class="panel  panel-info">
+	<center><p>All Cases </p></center>
+	<center><p>Ypu Can Delete Your Cas</p></center>
+</div>
+	</div>
+	@{
+		foreach (var item in Model)
+		{
+			<div class="col-sm-5 all_DivInfectedCase">
+				<div class="panel panel-info">
+					<center><h4>    Case: @item.DiseaseName</h4></center>
+				</div>
+		
+				Image of Diseas
+				<div >
+
+					<img class="img-thumbnail" src="data:image/*;base64,@Convert.ToBase64String(item.DiseasePicture)" style="width:100%; height:60%">
+				</div>
+				<a class="btn btn-danger btn-block"  href="profile/DeleteCase/@item.CaseId"> Delete Case</a>
+
+	
+		</div>
+			
+		}
+	}
+
+</div>

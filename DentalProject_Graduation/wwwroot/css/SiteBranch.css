@@ -1,0 +1,20 @@
+﻿body {
+}
+/*Admin page style*/
+.sideBar-admin {
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+.row-dashborad {
+    background-color: #eee;
+    padding: -20px;
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px;
+}

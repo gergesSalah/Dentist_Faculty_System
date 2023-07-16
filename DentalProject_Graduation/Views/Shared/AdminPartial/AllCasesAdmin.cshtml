@@ -1,0 +1,126 @@
+﻿@model IEnumerable<DentalProject_Graduation.Data.Entities.ViladCases>
+
+
+    <div class="col-lg-12 mb-4 order-0 land-message">
+        <div class="card">
+            <div class="d-flex align-items-end row">
+                <div class="col-sm-7">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">All Cases</h5>
+                        <p class="mb-4">
+                            You have to look at the patient's teeth and click on Done if it is correct and delete it if it is an invalid image or modify its diagnosis
+                        </p>
+
+
+                    </div>
+                </div>
+                <div class="col-sm-5 text-center text-sm-left">
+                    <div class="card-body pb-0 px-0 px-md-4">
+                        <img src="~/images/ill.png"
+                             height="140"
+                             alt="View Badge User"
+                             data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                             data-app-light-img="illustrations/man-with-laptop-light.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row" style="display:flex;justify-content:center;align-items:center">
+    @foreach(var item in Model)
+    {
+        <div class="col-5" style="background-color:white; margin:5px">
+            <img src="data:image/*;base64,@Convert.ToBase64String(item.photo)" class="profile-img-patient" width="80%" height="250" />
+            
+            <br />
+            <br />
+                <h4>Diagnosis: @item.NameDiseas</h4>
+            <br />
+            <input type="number" value="@item.IdDiseas" disabled style="display:none" id="idDiseas" name="idDiseas">
+                <input type="number" value="@item.IdCases" disabled style="display:none" id="id" name="id">
+
+
+            <button id="delete" class="btn btn-danger delete">Delete</button>
+            <button id="Edit" class="btn btn-primary Edit">Edit</button>
+            <button id="Done" class="btn btn-success Done">Correct</button>
+            <div class="col-12" id="listDiseas"> </div>
+
+        <br />
+        <br />
+        </div>
+     <br />
+    }
+
+</div>
+
+<script>
+    $(".delete").click(function(){
+        var id = $(this).prev().val();
+        $.ajax({
+            url: '/Admin/DeleteCase/'+id,
+             type:'POST',
+            success:function(){
+                $("#allCasas").click();
+            },
+            error:function(){
+                alert("Please Try Agin");
+            },
+        
+        
+        
+        });
+    });
+
+
+    $(".Done").click(function(){
+        var id = $(this).prev().prev().prev().val();
+        console.log(id)
+
+        $.ajax({
+           
+                url: '/Admin/CorrectCase/' + id,
+                type: 'POST',
+                success: function () {
+                    $("#allCasas").click();
+                },
+                error: function () {
+                    alert("Please Try Agin");
+                },
+
+
+
+            });
+
+      
+
+    })
+
+    $(".Edit").click(function(){
+        var id = $(this).prev().prev().val();
+     console.log(id);
+
+    
+      
+        $.ajax({
+            url: '/Admin/EditSelectType/'+id,
+            type: 'Get',
+            
+            success: function (res) {
+                $("#Cases").html(res);
+            },
+            error: function () {
+                alert("Please Try Agin");
+            },
+
+
+
+        });
+
+
+    
+    })
+
+
+
+</script>
